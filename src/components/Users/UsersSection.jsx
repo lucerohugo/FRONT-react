@@ -3,7 +3,11 @@ import axios from '../../api/axios';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { Button } from 'primereact/button';
-import 'primeicons/primeicons.css'; 
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import { InputText } from 'primereact/inputtext';
+import 'primeicons/primeicons.css';
+import "../../App.css";
 
 function UsersSection() {
   const [usuarios, setUsuarios] = useState([]);
@@ -68,92 +72,101 @@ function UsersSection() {
     const doc = new jsPDF();
     autoTable(doc, {
       startY: 20,
-      head: [['ID','Nombre', 'Email', 'Edad']],
+      head: [['ID', 'Nombre', 'Email', 'Edad']],
       body: usuarios.map(u => [u.id, u.nombre, u.email, u.edad]),
     });
     doc.save('usuarios.pdf');
   };
 
+  const actionBodyTemplate = (rowData) => {
+    return (
+      <div className="flex">
+        <Button
+          icon="pi pi-pencil"
+          className="p-button-rounded p-button-warning mr-2"
+          onClick={() => handleEditar(rowData)}
+          aria-label="Editar"
+          size="small"
+        />
+        <Button
+          icon="pi pi-trash"
+          className="p-button-rounded p-button-danger mr-2"
+          onClick={() => handleEliminar(rowData.id)}
+          aria-label="Eliminar"
+          size="small"
+        />
+        <Button
+          icon="pi pi-file-pdf"
+          className="p-button-rounded p-button-success"
+          onClick={exportarPDF}
+          aria-label="Exportar PDF"
+          size="small"
+        />
+      </div>
+    );
+  };
+
   return (
     <div className="p-4">
-        <h2 className="text-2xl font-bold mb-4">Lista de Usuarios</h2>
-      
+      <h2 className="text-2xl font-bold mb-4">Lista de Usuarios</h2>
 
-      <form onSubmit={handleSubmit} className="mb-4 space-y-2">
-        <input
+      <form onSubmit={handleSubmit} className="mb-4 space-y-2 flex flex-col items-center max-w-sm mx-auto">
+        <InputText
           type="text"
           name="nombre"
           placeholder="Nombre"
           value={form.nombre}
           onChange={handleChange}
-          className="border p-2 w-full"
+          className="w-full mb-2"
           required
         />
-        <input
+        <InputText
           type="email"
           name="email"
           placeholder="Email"
           value={form.email}
           onChange={handleChange}
-          className="border p-2 w-full"
+          className="w-full mb-2"
           required
         />
-        <input
+        <InputText
           type="number"
           name="edad"
           placeholder="Edad"
           value={form.edad}
           onChange={handleChange}
-          className="border p-2 w-full"
+          className="w-full mb-4"
           required
         />
         <Button
           label={editandoId ? 'Actualizar' : 'Agregar'}
           icon="pi pi-user-plus"
-          className="p-button-primary"
+          className="mi-boton-azul w-full"
           type="submit"
         />
       </form>
 
-      <table className="table-auto w-full border">
-        <thead>
-          <tr className="bg-gray-200">
-            <th className="border px-4 py-2">Nombre</th>
-            <th className="border px-4 py-2">Email</th>
-            <th className="border px-4 py-2">Edad</th>
-            <th className="border px-4 py-2">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Array.isArray(usuarios) && usuarios.map((u) => (
-            <tr key={u.id}>
-              <td className="border px-4 py-2">{u.nombre}</td>
-              <td className="border px-4 py-2">{u.email}</td>
-              <td className="border px-4 py-2">{u.edad}</td>
-              <td className="border px-4 py-2 space-x-2">
-                <Button
-                  icon="pi pi-pencil"
-                  className="p-button-rounded p-button-warning"
-                  onClick={() => handleEditar(u)}
-                  aria-label="Editar"
-                />
-                <Button
-                  icon="pi pi-trash"
-                  className="p-button-rounded p-button-danger"
-                  onClick={() => handleEliminar(u.id)}
-                  aria-label="Eliminar"
-                />
-                <Button
-                  icon="pi pi-file-pdf"
-                  className="p-button-rounded p-button-success"
-                  onClick={exportarPDF}
-                  aria-label="Exportar PDF"
-                />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <DataTable
+        value={usuarios}
+        className="mt-4"
+        responsiveLayout="scroll"
+        emptyMessage="No hay usuarios para mostrar"
+        tableStyle={{ minWidth: '90rem' }}
+      >
+        <Column field="nombre" header="Nombre" />
+        <Column field="email" header="Email" />
+        <Column field="edad" header="Edad" />
+        <Column header="Acciones" body={actionBodyTemplate} style={{ minWidth: '20px' }} />
+      </DataTable>
+
+      <div className="flex justify-center mt-6">
+        <Button 
+          label="Volver" 
+          icon="pi pi-arrow-left" 
+          className="p-button-secondary" 
+          onClick={() => window.location.href = '/'} 
+        />
+      </div>
     </div>
   );
 }

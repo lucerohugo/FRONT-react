@@ -1,12 +1,75 @@
-# React + Vite
+# 📝 Práctico Integrador: App Fullstack React + Node.js
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
 
-Currently, two official plugins are available:
+Aplicación fullstack en JavaScript con **React** en el frontend y **Express** en el backend que permite realizar CRUD completos de:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Productos  
+- Usuarios (personas)
 
-## Expanding the ESLint configuration
+El frontend consume los endpoints del backend usando **axios** y permite crear, listar, editar y eliminar productos y usuarios. Además, incluye funcionalidad para exportar listados en PDF usando **jspdf**.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+El diseño usa **PrimeReact** para una interfaz clara y agradable.
+
+---
+
+## Tecnologías y librerías principales
+
+- React (con Vite)  
+- Express  
+- Axios  
+- fs para persistencia en JSON (`productos.json` y `usuarios.json`)  
+- PrimeReact + PrimeIcons  
+- React Router DOM  
+- jspdf + jspdf-autotable  
+
+---
+
+## Instalación y ejecución
+
+### Backend
+
+```bash
+cd backend
+npm install
+npm run dev
+
+---
+Pasos para configurar y usar:
+Asegúrate de tener instalado nodemon como dependencia de desarrollo. Si no lo tienes, instálalo con:
+
+npm install --save-dev nodemon
+
+En tu package.json dentro del backend, agrega o modifica el script "dev" como arriba.
+
+Ahora puedes arrancar el backend en modo desarrollo con:
+npm run dev
+
+
+
+
+Frontend
+Comandos usados para crear y preparar el frontend:
+npm create vite@latest fronted_react_y_node --template react
+cd fronted_react_y_node
+npm install
+npm install axios
+npm install axios jspdf jspdf-autotable
+npm install primereact primeicons
+npm install react-router-dom
+
+Para correr la app frontend:
+npm run dev
+
+
+Uso
+CRUD completo para productos y usuarios
+
+Exportación de listados en PDF
+
+Navegación entre secciones con React Router
+
+Interfaz estilizada con PrimeReact
+
+
+Desarrollado y diseñado por 💻 **Hugo Lucero**.

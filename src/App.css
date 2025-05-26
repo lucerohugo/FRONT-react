@@ -45,6 +45,21 @@
 /*////////////////////
 
 /* PrimeReact Styles */
-@import "primereact/resources/themes/lara-light-indigo/theme.css"; /* Tema */
-@import "primereact/resources/primereact.min.css"; /* Componentes */
-@import "primeicons/primeicons.css"; /* Iconos */
+
+
+
+
+
+.mi-boton-azul {
+  background-color: #0056b3 !important;
+  border-color: #0056b3 !important;
+  color: white !important;
+  border-radius: 4px !important;
+}
+
+.mi-boton-azul:hover {
+  background-color: #004494 !important;
+  border-color: #004494 !important;
+}
+
+
