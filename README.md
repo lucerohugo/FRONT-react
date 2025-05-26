@@ -1,75 +1,100 @@
-# 📝 Práctico Integrador: App Fullstack React + Node.js
+# Práctico Integrador: App Fullstack React + Node.js
 
 ## Descripción
 
-Aplicación fullstack en JavaScript con **React** en el frontend y **Express** en el backend que permite realizar CRUD completos de:
+Aplicación **fullstack** desarrollada en **JavaScript**, con:
 
-- Productos  
-- Usuarios (personas)
+- **Frontend:** React (Vite)
+- **Backend:** Express (Node.js)
 
-El frontend consume los endpoints del backend usando **axios** y permite crear, listar, editar y eliminar productos y usuarios. Además, incluye funcionalidad para exportar listados en PDF usando **jspdf**.
+Permite realizar **CRUD completos** de:
 
-El diseño usa **PrimeReact** para una interfaz clara y agradable.
+- **Productos**
+- **Usuarios**
 
----
+El frontend consume los endpoints del backend utilizando **Axios** y permite:
 
-## Tecnologías y librerías principales
+- Crear, listar, editar y eliminar productos y usuarios
+- Exportar listados en **PDF** mediante `jspdf` y `jspdf-autotable`
 
-- React (con Vite)  
-- Express  
-- Axios  
-- fs para persistencia en JSON (`productos.json` y `usuarios.json`)  
-- PrimeReact + PrimeIcons  
-- React Router DOM  
-- jspdf + jspdf-autotable  
+Diseño minimalista y moderno con **PrimeReact**.
 
 ---
 
-## Instalación y ejecución
+## Tecnologías y Librerías Principales
 
-### Backend
+- React (con Vite)
+- Express (Node.js)
+- Axios
+- fs (para persistencia en archivos JSON: `productos.json` y `usuarios.json`)
+- PrimeReact + PrimeIcons
+- React Router DOM
+- jspdf + jspdf-autotable
+
+---
+
+## Instalación y Ejecución
+
+###  Backend
 
 ```bash
 cd backend
 npm install
 npm run dev
+```
+
+>  Asegúrate de tener instalado `nodemon` en tu backend:
+
+```bash
+npm install --save-dev nodemon
+```
+
+En tu `package.json`, agrega o modifica el script `"dev"`:
+
+```json
+"scripts": {
+  "dev": "nodemon index.js"
+}
+```
+
+Ahora si inicia el backend en modo desarrollo con:
+
+```bash
+npm run dev
+```
 
 ---
-Pasos para configurar y usar:
-Asegúrate de tener instalado nodemon como dependencia de desarrollo. Si no lo tienes, instálalo con:
 
-npm install --save-dev nodemon
+### Frontend
 
-En tu package.json dentro del backend, agrega o modifica el script "dev" como arriba.
+#### Comandos para crear y configurar:
 
-Ahora puedes arrancar el backend en modo desarrollo con:
-npm run dev
-
-
-
-
-Frontend
-Comandos usados para crear y preparar el frontend:
+```bash
 npm create vite@latest fronted_react_y_node --template react
-cd fronted_react_y_node
 npm install
 npm install axios
 npm install axios jspdf jspdf-autotable
 npm install primereact primeicons
 npm install react-router-dom
+```
 
-Para correr la app frontend:
+#### Para correr el frontend:
+
+```bash
 npm run dev
+```
 
+---
 
-Uso
-CRUD completo para productos y usuarios
+## Funcionalidades
 
-Exportación de listados en PDF
+- CRUD completo para **productos** y **usuarios**
+- Exportación de listados en **PDF**
+- Navegación entre secciones con **React Router**
+- Interfaz estilizada con **PrimeReact**
 
-Navegación entre secciones con React Router
+---
 
-Interfaz estilizada con PrimeReact
+## Desarrollado y Diseñado por
 
-
-Desarrollado y diseñado por 💻 **Hugo Lucero**.
+**Hugo Lucero** 
